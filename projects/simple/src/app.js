@@ -1,14 +1,19 @@
-const ololo = {
-    name: 'piu',
-    age: 3,
-    piu: 4,
-};
-
-const a = 4;
-const b = 5;
-const c = `ololo`;
-const arr = [1, 2, 3, 4];
-const fun = (irr) => {
-    console.log(irr);
-};
-const t = { foo: 4 };
+"use strict";
+class printer {
+    constructor(name) {
+        this._name = name;
+    }
+    print(message) {
+        console.log(`${this._name} says: ${message}`);
+    }
+}
+const p = new printer('Cat');
+p.print('SimpleStart');
+setTimeout(() => {
+    p.print('from timeout');
+}, 0);
+Promise.resolve().then(() => {
+    p.print('from promise');
+});
+p.print('SimpleEnd');
+p.print('SimpleEnd');
