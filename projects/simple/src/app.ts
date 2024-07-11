@@ -1,3 +1,7 @@
+import jsprinter from './js/script';
+
+jsprinter('Hello, TypeScript');
+
 class printer {
   private readonly _name: string;
   constructor(name: string) {
