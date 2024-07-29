@@ -31,4 +31,5 @@ _ReSharper*/
 #Nuget packages folder
 packages/
 .idea/
-projects/simple/stage/**
+projects/simple/dist/**
+projects/react/dist/**

@@ -2,9 +2,9 @@
   "name": "simple",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "npx tsc && node stage/app.js"
+    "start": "npx tsc && node dist/app.js"
   },
   "keywords": [],
   "author": "",
