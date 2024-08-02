@@ -1,4 +1,5 @@
 import { DependencyPrinter } from './dependency1';
+import './styles/testStyle.css';
 
 class Printer {
   constructor(private message: string) {}
