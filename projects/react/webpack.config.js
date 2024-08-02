@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
+  devtool: 'source-map',
   entry: './src/index.ts',
   output: { filename: 'index.js' },
   plugins: [new HtmlWebpackPlugin({ template: './template.html' })],
@@ -21,10 +22,8 @@ module.exports = {
     ],
   },
   devServer: {
-    open: true,
     client: {
       overlay: true,
-      //progress: true,
     },
   },
 };

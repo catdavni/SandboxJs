@@ -1,6 +1,7 @@
 import React from 'react';
+import ToDoList from './toDoList/rootComponent';
 
-function App() {
+function SimpleApp() {
   return (
     <div>
       <h1>Hello, world!</h1>
@@ -8,4 +9,13 @@ function App() {
   );
 }
 
-export default App;
+function ToDoListApp() {
+  return (
+    <>
+      <ToDoList />
+    </>
+  );
+}
+
+//export default SimpleApp;
+export default ToDoListApp;

@@ -28,8 +28,11 @@ obj/
 _ReSharper*/
 [Tt]est[Rr]esult*
 .vs/
+# User-specific stuff
+.idea/**/workspace.xml
+
 #Nuget packages folder
 packages/
-.idea/
 projects/simple/dist/**
 projects/react/dist/**
+/.idea/codeStyles/codeStyleConfig.xml
