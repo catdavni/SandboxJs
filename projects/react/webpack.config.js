@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: './src/index.ts',
-  output: { filename: "index.js" },
+  output: { filename: 'index.js' },
   plugins: [new HtmlWebpackPlugin({ template: './template.html' })],
   resolve: { extensions: ['.ts', '.tsx', '.js'] }, // need to resolve imports with different extensions
   module: {
@@ -16,8 +16,15 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      }
+        use: ['style-loader', 'css-loader'],
+      },
     ],
+  },
+  devServer: {
+    open: true,
+    client: {
+      overlay: true,
+      //progress: true,
+    },
   },
 };
