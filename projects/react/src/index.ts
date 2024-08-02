@@ -1,16 +1,8 @@
-import { DependencyPrinter } from './dependency1';
+import reactDom from 'react-dom/client';
 import './styles/testStyle.css';
+import App from './components/app';
 
-class Printer {
-  constructor(private message: string) {}
+const root = document.getElementById('root');
+reactDom.createRoot(root!).render(App());
 
-  print() {
-    console.log(this.message);
-  }
-}
 
-const printer = new Printer('INDEX.TS printer');
-printer.print();
-
-const dependencyPrinter = new DependencyPrinter('ololo');
-console.log(dependencyPrinter.print());
