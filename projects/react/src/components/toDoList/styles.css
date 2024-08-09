@@ -5,10 +5,13 @@
     background-color: cyan;
     font-size: 2em;
 
+    label {
+        margin-left: 5px;
+    }
 }
 
 .taskList {
-    height: 50vh;
+    height: 30vh;
     border: 1px solid black;
 }
 
@@ -17,6 +20,11 @@
     margin: 5px;
     padding-left: 5px;
     font-size: inherit;
+
+    input {
+        height: 25px;
+        width: 25px;
+    }
 }
 
 .addTaskControls {

@@ -36,3 +36,5 @@ packages/
 projects/simple/dist/**
 projects/react/dist/**
 /.idea/codeStyles/codeStyleConfig.xml
+/.idea/vcs.xml
+/.idea/codeStyles/Project.xml

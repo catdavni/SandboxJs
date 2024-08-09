@@ -1,32 +1,14 @@
 import React from 'react';
-import { useState } from 'react';
 import './styles.css';
+import { Provider } from 'react-redux';
+import { toDoListStore } from './state/toDoListStore';
+import { ToDoListComponent } from './toDoListComponent';
 
 function RootComponent() {
-  const [toDoList, setToDoList] = useState<string[]>([]);
-  const [task, setTask] = useState('');
-  const addToDo = () => {
-    setToDoList([...toDoList, task]);
-    setTask('');
-  };
-
   return (
-    <div className="container">
-      <div className="taskList">
-        {toDoList.map((task) => {
-          return <div className="task">{task}</div>;
-        })}
-      </div>
-      <div className="addTaskControls">
-        <input
-          type="text"
-          value={task}
-          onChange={(e) => setTask(e.target.value)}
-          placeholder="Task to do"
-        />
-        <button onClick={(e) => addToDo()}>Add</button>
-      </div>
-    </div>
+    <Provider store={toDoListStore}>
+      <ToDoListComponent />
+    </Provider>
   );
 }
 

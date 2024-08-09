@@ -4,7 +4,7 @@ module.exports = {
   mode: 'development',
   devtool: 'source-map',
   entry: './src/index.ts',
-  output: { filename: 'index.js' },
+  output: { filename: 'app.js' },
   plugins: [new HtmlWebpackPlugin({ template: './template.html' })],
   resolve: { extensions: ['.ts', '.tsx', '.js'] }, // need to resolve imports with different extensions
   module: {
