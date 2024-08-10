@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import createSagaMiddleware from 'redux-saga';
+import { addToDoRootSaga } from './sagas';
 import toDoListSlice from './toDoListSlice';
 import { getLogger } from '../../../logger';
 import { createToDo } from './toDo';
-const logger = getLogger('toDoListStore');
+const logger = getLogger('StoreMiddleware');
 
 const loggingMiddleware = (api: any) => (next: any) => (action: any) => {
   logger.info('Dispatching action:', JSON.stringify(action));
@@ -16,12 +18,17 @@ const initialState = {
   },
 };
 
+const sagaMiddleware = createSagaMiddleware({
+  context: { logger: getLogger('ReduxSaga') },
+});
 export const toDoListStore = configureStore({
   preloadedState: initialState,
   reducer: {
     toDo: toDoListSlice,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(loggingMiddleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(loggingMiddleware).concat(sagaMiddleware),
 });
+
+sagaMiddleware.run(addToDoRootSaga);
 
 export type RootState = ReturnType<typeof toDoListStore.getState>;

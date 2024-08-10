@@ -11,8 +11,9 @@ enum AddTaskKind {
   Action,
   ActionWithPrepare,
   CustomActionWithPrepare,
+  FromSaga,
 }
-const addTaskKind: AddTaskKind = AddTaskKind.CustomActionWithPrepare;
+const addTaskKind: AddTaskKind = AddTaskKind.FromSaga;
 
 export function ToDoListComponent() {
   const tasks = useSelector((state: RootState) => state.toDo.all);
@@ -29,6 +30,9 @@ export function ToDoListComponent() {
         break;
       case AddTaskKind.CustomActionWithPrepare:
         dispatch(actions.customAddToDoAction(taskText));
+        break;
+      case AddTaskKind.FromSaga:
+        dispatch(actions.addToDoFromSagaAction(taskText));
         break;
       default:
         logger.error('Unknown addTaskKind');

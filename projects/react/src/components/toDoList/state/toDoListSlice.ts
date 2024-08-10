@@ -2,11 +2,24 @@ import { createSlice, createAction, PayloadAction } from '@reduxjs/toolkit';
 import { getLogger } from '../../../logger';
 import { createToDo, ToDo } from './toDo';
 
-const logger = getLogger('toDoListSlice');
+const logger = getLogger('Slice');
 
 const initialValue = {
   all: [] as ToDo[],
 };
+
+const addToDoFromSagaAction = createAction('addToDoFromSagaAction', (task: string) => {
+  logger.info('addToDoFromSagaAction prepare called');
+  if (task === '') {
+    return {
+      error: 'Task cannot be empty',
+      payload: null as unknown as ToDo,
+    };
+  }
+  return {
+    payload: createToDo(task),
+  };
+});
 
 const customAddToDoAction = createAction('customAddToDoAction', (task: string) => {
   logger.info('customAddToDoAction prepare called');
@@ -40,6 +53,7 @@ const toDoListSlice = createSlice({
         };
       },
       reducer: (state, action: PayloadAction<ToDo, never, never, string> | PayloadAction<ToDo>) => {
+        logger.info('addToDoRaw reducer called');
         if ('error' in action) {
           logger.error(action.error);
           return;
@@ -49,6 +63,7 @@ const toDoListSlice = createSlice({
     },
 
     addToDo: (state, action: PayloadAction<ToDo>) => {
+      logger.info('addToDo reducer called');
       state.all.push(action.payload);
     },
 
@@ -65,6 +80,7 @@ const toDoListSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(customAddToDoAction, (state, action) => {
+      logger.info('customAddToDoAction reducer called');
       if ('error' in action) {
         logger.error(action.error as string);
         return;
@@ -74,5 +90,5 @@ const toDoListSlice = createSlice({
   },
 });
 
-export const actions = { ...toDoListSlice.actions, customAddToDoAction };
+export const actions = { ...toDoListSlice.actions, customAddToDoAction, addToDoFromSagaAction };
 export default toDoListSlice.reducer;
