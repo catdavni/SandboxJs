@@ -1,6 +1,7 @@
 import React from 'react';
-import { ToDo, toggleToDo } from './state/toDoListSlice';
+import { actions } from './state/toDoListSlice';
 import { useDispatch } from 'react-redux';
+import { ToDo } from './state/toDo';
 
 type ToDoTaskProps = {
   categoryName: string;
@@ -16,11 +17,7 @@ export function TaskComponent({ categoryName, tasks }: ToDoTaskProps) {
         {tasks.map((task) => {
           return (
             <div className="task" key={task.id}>
-              <input
-                type="checkbox"
-                checked={task.completed}
-                onChange={(e) => dispatch(toggleToDo(task))}
-              />
+              <input type="checkbox" checked={task.completed} onChange={(e) => dispatch(actions.toggleToDo(task))} />
               <label>{task.task}</label>
             </div>
           );
