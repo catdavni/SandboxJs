@@ -1,0 +1,19 @@
+{
+  "name": "electron",
+  "version": "1.0.0",
+  "main": ".webpack/main/index.js",
+  "description": "",
+  "scripts": {
+    "start": "electron-forge start -- --remote-debugging-port=9223"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@electron-forge/cli": "^7.4.0",
+    "@electron-forge/plugin-webpack": "^7.4.0",
+    "css-loader": "^7.1.2",
+    "electron": "^32.0.1",
+    "style-loader": "^4.0.0"
+  }
+}

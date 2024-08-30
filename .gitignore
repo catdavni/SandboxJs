@@ -38,3 +38,4 @@ projects/react/dist/**
 /.idea/codeStyles/codeStyleConfig.xml
 /.idea/vcs.xml
 /.idea/codeStyles/Project.xml
+/projects/electron/.webpack/**
