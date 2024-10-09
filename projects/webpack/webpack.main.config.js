@@ -1,4 +1,5 @@
 const path = require('path');
+const { WebpackCustomPlugin } = require('./src/plugins/customPlugin.js');
 module.exports = {
   mode: 'development',
   entry: {
@@ -8,4 +9,5 @@ module.exports = {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist', 'main'),
   },
+  plugins: [new WebpackCustomPlugin()],
 };

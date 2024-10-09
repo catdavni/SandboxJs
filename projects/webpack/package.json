@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "buildCats",
     "buildCats": "webpack --config webpack.cats.config.js",
     "buildDogs": "webpack --config webpack.dogs.config.js",
     "buildMain": "webpack --config webpack.main.config.js"

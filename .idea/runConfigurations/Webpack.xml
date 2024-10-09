@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Webpack" type="NodeJSConfigurationType" application-parameters="--config webpack.main.config.js" node-parameters="--inspect=9999" path-to-js-file="node_modules/webpack/bin/webpack.js" working-dir="$PROJECT_DIR$/projects/webpack">
+  <configuration default="false" name="Webpack" type="NodeJSConfigurationType" application-parameters="--config webpack.cats.config.js" node-parameters="--inspect=9999" path-to-js-file="node_modules/webpack/bin/webpack.js" working-dir="$PROJECT_DIR$/projects/webpack">
     <EXTENSION ID="com.intellij.lang.javascript.buildTools.npm.rc.StartBrowserRunConfigurationExtension">
       <browser with-js-debugger="true" />
     </EXTENSION>
