@@ -1,3 +1,4 @@
+const path = require('path');
 const { app, ipcMain, BrowserWindow } = require('electron');
 
 const createWindow = () => {
@@ -7,14 +8,16 @@ const createWindow = () => {
     height: 600,
     title: 'MainWindow',
     webPreferences: {
-      preload: FUCKING_MAGIC_PRELOAD_WEBPACK_ENTRY, // hate fucking magic
+      // preload: FUCKING_MAGIC_PRELOAD_WEBPACK_ENTRY, // hate fucking magic
       nodeIntegration: false,
       contextIsolation: true,
     },
   });
 
   // and load the index.html of the app.
-  mainWindow.loadURL(FUCKING_MAGIC_WEBPACK_ENTRY); // hate fucking magic
+  // mainWindow.loadURL(FUCKING_MAGIC_WEBPACK_ENTRY); // hate fucking magic
+  const pathToHtml = path.resolve(__dirname, '..', 'renderer', 'index.html');
+  mainWindow.loadURL(pathToHtml);
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();

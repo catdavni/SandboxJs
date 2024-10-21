@@ -40,3 +40,4 @@ projects/react/dist/**
 /.idea/codeStyles/Project.xml
 /projects/electron/.webpack/**
 /projects/webpack/dist/**
+/projects/electron/dist/

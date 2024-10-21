@@ -1,9 +1,12 @@
 {
   "name": "electron",
   "version": "1.0.0",
-  "main": ".webpack/main/index.js",
+  "main": "./dist/main/index.js",
   "description": "",
   "scripts": {
+    "buildMain": "webpack --config webpack.main.config.js",
+    "buildRenderer": "webpack --config webpack.renderer.config.js",
+    "build": "npm run buildMain && npm run buildRenderer",
     "start": "electron-forge start -- --remote-debugging-port=9223"
   },
   "keywords": [],
@@ -14,6 +17,7 @@
     "@electron-forge/plugin-webpack": "^7.4.0",
     "css-loader": "^7.1.2",
     "electron": "^32.0.1",
-    "style-loader": "^4.0.0"
+    "style-loader": "^4.0.0",
+    "webpack-cli": "^5.1.4"
   }
 }
