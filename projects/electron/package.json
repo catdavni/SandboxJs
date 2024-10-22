@@ -6,8 +6,15 @@
   "scripts": {
     "buildMain": "webpack --config webpack.main.config.js",
     "buildRenderer": "webpack --config webpack.renderer.config.js",
-    "build": "npm run buildMain && npm run buildRenderer",
-    "start": "electron-forge start -- --remote-debugging-port=9223"
+    "buildPreload": "webpack --config webpack.preload.config.js",
+    "build": "npm run buildMain && npm run buildRenderer && npm run buildPreload",
+    "serveRenderer": "webpack serve --config webpack.renderer.config.js",
+    "watchPreload": "webpack --config webpack.preload.config.js --watch",
+    "startElectron": "electron-forge start -- --remote-debugging-port=9223",
+    "watchMain": "webpack --config webpack.main.config.js --watch",
+    "startMainWaitForDeps": "wait-on http://localhost:3333/ && npm run startElectron",
+    "serve": "concurrently \"npm run watchPreload\" \"npm run serveRenderer\" \"npm run watchMain\" \"npm run startMainWaitForDeps\"",
+    "start": "npm run serve"
   },
   "keywords": [],
   "author": "",
@@ -19,5 +26,9 @@
     "electron": "^32.0.1",
     "style-loader": "^4.0.0",
     "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "concurrently": "^9.0.1",
+    "wait-on": "^8.0.1"
   }
 }

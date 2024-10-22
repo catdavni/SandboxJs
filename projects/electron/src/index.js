@@ -9,6 +9,7 @@ const createWindow = () => {
     title: 'MainWindow',
     webPreferences: {
       // preload: FUCKING_MAGIC_PRELOAD_WEBPACK_ENTRY, // hate fucking magic
+      preload: path.resolve(__dirname, '..', 'preload', 'preload.js'),
       nodeIntegration: false,
       contextIsolation: true,
     },
@@ -16,7 +17,7 @@ const createWindow = () => {
 
   // and load the index.html of the app.
   // mainWindow.loadURL(FUCKING_MAGIC_WEBPACK_ENTRY); // hate fucking magic
-  const pathToHtml = path.resolve(__dirname, '..', 'renderer', 'index.html');
+  const pathToHtml = 'http://localhost:3333'; //path.resolve(__dirname, '..', 'renderer', 'index.html');
   mainWindow.loadURL(pathToHtml);
 
   // Open the DevTools.

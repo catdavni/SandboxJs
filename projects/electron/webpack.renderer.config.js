@@ -2,9 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'development',
-  devtool: 'source-map',
-  watch: true,
   entry: './src/renderer.js',
+  devtool: 'source-map',
+  target: 'web',
   output: { filename: '[name].js', path: path.resolve(__dirname, 'dist', 'renderer') },
   plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })],
   module: {
@@ -15,5 +15,7 @@ module.exports = {
       },
     ],
   },
-  target: 'web',
+  devServer: {
+    port: 3333,
+  },
 };
