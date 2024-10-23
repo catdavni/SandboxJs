@@ -1,6 +1,10 @@
 const path = require('path');
 const { app, ipcMain, BrowserWindow } = require('electron');
 
+const preloadScriptPath =
+  process.env.RUN_CONFIG === 'bare_webpack' ? path.resolve(__dirname, '..', 'preload', 'preload.js') : FUCKING_MAGIC_PRELOAD_WEBPACK_ENTRY;
+const rendererScriptPath = process.env.RUN_CONFIG === 'bare_webpack' ? 'http://localhost:3333' : FUCKING_MAGIC_WEBPACK_ENTRY;
+
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -9,7 +13,7 @@ const createWindow = () => {
     title: 'MainWindow',
     webPreferences: {
       // preload: FUCKING_MAGIC_PRELOAD_WEBPACK_ENTRY, // hate fucking magic
-      preload: path.resolve(__dirname, '..', 'preload', 'preload.js'),
+      preload: preloadScriptPath,
       nodeIntegration: false,
       contextIsolation: true,
     },
@@ -18,7 +22,7 @@ const createWindow = () => {
   // and load the index.html of the app.
   // mainWindow.loadURL(FUCKING_MAGIC_WEBPACK_ENTRY); // hate fucking magic
   const pathToHtml = 'http://localhost:3333'; //path.resolve(__dirname, '..', 'renderer', 'index.html');
-  mainWindow.loadURL(pathToHtml);
+  mainWindow.loadURL(rendererScriptPath);
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();

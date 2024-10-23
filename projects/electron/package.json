@@ -1,20 +1,12 @@
 {
   "name": "electron",
   "version": "1.0.0",
-  "main": "./dist/main/index.js",
+  "main": ".webpack/main/index.js",
   "description": "",
   "scripts": {
-    "buildMain": "webpack --config webpack.main.config.js",
-    "buildRenderer": "webpack --config webpack.renderer.config.js",
-    "buildPreload": "webpack --config webpack.preload.config.js",
-    "build": "npm run buildMain && npm run buildRenderer && npm run buildPreload",
-    "serveRenderer": "webpack serve --config webpack.renderer.config.js",
-    "watchPreload": "webpack --config webpack.preload.config.js --watch",
-    "startElectron": "electron-forge start -- --remote-debugging-port=9223",
-    "watchMain": "webpack --config webpack.main.config.js --watch",
-    "startMainWaitForDeps": "wait-on http://localhost:3333/ && npm run startElectron",
-    "serve": "concurrently \"npm run watchPreload\" \"npm run serveRenderer\" \"npm run watchMain\" \"npm run startMainWaitForDeps\"",
-    "start": "npm run serve"
+    "buildWithWebpack": "node scripts/startWithBareWebpack.js build",
+    "startWithWebpack": "node scripts/startWithBareWebpack.js serve",
+    "start": "electron-forge start -- --remote-debugging-port=9223"
   },
   "keywords": [],
   "author": "",
