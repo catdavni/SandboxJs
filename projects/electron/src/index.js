@@ -19,13 +19,13 @@ const createWindow = () => {
     },
   });
 
+  // Open the DevTools.
+  mainWindow.webContents.openDevTools();
+
   // and load the index.html of the app.
   // mainWindow.loadURL(FUCKING_MAGIC_WEBPACK_ENTRY); // hate fucking magic
   const pathToHtml = 'http://localhost:3333'; //path.resolve(__dirname, '..', 'renderer', 'index.html');
   mainWindow.loadURL(rendererScriptPath);
-
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
