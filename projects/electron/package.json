@@ -1,12 +1,12 @@
 {
   "name": "electron",
   "version": "1.0.0",
-  "main": ".webpack/main/index.js",
+  "main": "dist/main/index.js",
   "description": "",
   "scripts": {
-    "buildWithWebpack": "node scripts/startWithBareWebpack.js build",
-    "startWithWebpack": "node scripts/startWithBareWebpack.js serve",
-    "start": "electron-forge start -- --remote-debugging-port=9223"
+    "buildWithWebpack": "ts-node scripts/startWithBareWebpack.ts build",
+    "startWithWebpack": "ts-node scripts/startWithBareWebpack.ts serve",
+    "start": "ts-node scripts/packageJsonPatcher.ts forge && electron-forge start -- --remote-debugging-port=9223"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +20,11 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "@types/debug": "^4.1.12",
     "concurrently": "^9.0.1",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "typescritp": "^1.0.0",
     "wait-on": "^8.0.1"
   }
 }

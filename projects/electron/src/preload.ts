@@ -1,5 +1,4 @@
-const el = require('electron');
-const { ipcRenderer } = el;
+import { ipcRenderer } from 'electron';
 
 // Debug preload script
 // Trigger HMR to trigger debugger to attach (Dev tools must be open)
