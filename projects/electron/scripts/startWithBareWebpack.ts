@@ -11,11 +11,11 @@ const startWithRedirectedOutput = async (name: string, command: string): Promise
   });
 
   process.stdout.on('data', (data) => {
-    console.log(`[${name}]`, data.toString());
+    console.log(`[${name}]`,`[INFO]`, data.toString());
   });
 
   process.stderr.on('data', (data) => {
-    console.error(`[${name}]`, data.toString());
+    console.error(`[${name}]`,`[ERROR]`, data.toString());
   });
 
   return new Promise((resolve, reject) => {
@@ -48,7 +48,7 @@ async function build() {
     case 'build':
       await build();
       break;
-    case 'serve':
+    case 'watchMode':
       patchMainToWebpack();
       // we can use hot reload for renderer process
       void startWithRedirectedOutput('RENDERER', 'npx webpack serve --config webpack.renderer.config.ts');

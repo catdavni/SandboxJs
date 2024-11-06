@@ -1,0 +1,19 @@
+.itemList {
+    display: flex;
+    flex-direction: column;
+
+    .item {
+        border: 1px solid #000;
+        margin: 1vh;
+        padding: 1vh;
+
+        span:nth-of-type(odd) {
+            font-weight: bold;
+        }
+        span {
+            display: inline-block;
+            margin-right: 1vw;
+            margin-top: 1vh;
+        }
+    }
+}

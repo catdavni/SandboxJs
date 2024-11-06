@@ -10,7 +10,7 @@ const mainConfig: WebpackConfiguration = {
 };
 
 const rendererConfig: WebpackConfiguration = {
-  resolve: { extensions: ['.ts', '.js', '.css'] },
+  resolve: { extensions: ['.ts', '.tsx', '.js', '.css'] },
   module: {
     rules: [
       ...webpackLoaderRules,

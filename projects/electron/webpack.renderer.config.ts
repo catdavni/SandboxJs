@@ -14,7 +14,7 @@ const rendererConfig = {
   target: 'web',
   output: { filename: '[name].js', path: path.resolve(__dirname, 'dist', 'renderer') },
   plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })],
-  resolve: { extensions: ['.ts', '.js', '.css'] },
+  resolve: { extensions: ['.ts', '.tsx', '.js', '.css'] },
   module: { rules: webpackLoaderRules },
   devServer: {
     port: 3333,

@@ -1,11 +1,11 @@
 {
   "name": "electron",
   "version": "1.0.0",
-  "main": "dist/main/index.js",
+  "main": ".webpack/main/index.js",
   "description": "",
   "scripts": {
     "buildWithWebpack": "ts-node scripts/startWithBareWebpack.ts build",
-    "startWithWebpack": "ts-node scripts/startWithBareWebpack.ts serve",
+    "startWithWebpack": "ts-node scripts/startWithBareWebpack.ts watchMode",
     "start": "ts-node scripts/packageJsonPatcher.ts forge && electron-forge start -- --remote-debugging-port=9223"
   },
   "keywords": [],
@@ -21,7 +21,11 @@
   },
   "dependencies": {
     "@types/debug": "^4.1.12",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
     "concurrently": "^9.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescritp": "^1.0.0",

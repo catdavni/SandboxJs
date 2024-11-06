@@ -19,5 +19,5 @@ const patchPackageJsonMain = (pathToEntryPoint: string) => {
 if(process.argv[2] === 'forge') {
   patchMainToForge();
 }else {
-  console.error('Unknown command', process.argv[2]);
+  console.info(`Skip patching package.json, command: ${process.argv[2]}`);
 }
