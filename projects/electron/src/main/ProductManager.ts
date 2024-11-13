@@ -32,10 +32,16 @@ export class ProductManager {
 
   private createProduct = (mainWindowEvent: IpcMainEvent) => {
     const productWindow = new ProductWindow(this.mainWindow);
-    ipcMain.once(ProductPreloadToMainChannel.ProductCreated, (_, product: Product) => {
+
+    const productCreatedHandler = (event: IpcMainEvent, product: Product) => {
       this.products.push(product);
       mainWindowEvent.reply(ProductPreloadToMainChannel.ProductListUpdates, this.products);
       productWindow.close();
+    };
+
+    productWindow.on('close', (e) => {
+      ipcMain.off(ProductPreloadToMainChannel.ProductCreated, productCreatedHandler);
     });
+    ipcMain.on(ProductPreloadToMainChannel.ProductCreated, productCreatedHandler);
   };
 }

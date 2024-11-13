@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { Product } from '../../shared/Product';
 import { getApiBridge } from '../../preload_renderer_shared/communication/ProductEditWindow';
 
 //debugger;
 
-export function ProductEdit() {
+export const ProductEdit: FunctionComponent = () => {
   const [name, setName] = useState<string>('');
   const [price, setPrice] = useState<number>(0);
 
@@ -23,4 +23,4 @@ export function ProductEdit() {
       <button onClick={() => getApiBridge().productCreated({ id: Math.random(), name, price } as Product)}>Create</button>
     </div>
   );
-}
+};
