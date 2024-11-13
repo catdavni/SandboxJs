@@ -8,6 +8,7 @@ const mainConfig = {
   devtool: 'source-map',
   output: { filename: 'index.js', path: path.resolve(__dirname, 'dist', 'main') },
   module: { rules: webpackLoaderRules },
+  resolve: { extensions: ['.ts', '.js'] },
 };
 
 export default mainConfig;

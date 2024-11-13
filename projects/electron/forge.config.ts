@@ -4,6 +4,7 @@ import { WebpackConfiguration, WebpackPluginRendererConfig } from '@electron-for
 
 const mainConfig: WebpackConfiguration = {
   entry: './src/index.ts',
+  resolve: { extensions: ['.ts', '.js'] },
   module: {
     rules: webpackLoaderRules,
   },
@@ -38,9 +39,18 @@ const forgeConfig = {
                 {
                   name: 'fucking_magic',
                   html: './src/index.html',
-                  js: './src/renderer.ts',
+                  js: './src/renderer/window/ProductMainWindow.ts',
                   preload: {
-                    js: './src/preload.ts',
+                    js: './src/preload/window/ProductMainWindow.ts',
+                  },
+                  nodeIntegration: false,
+                },
+                {
+                  name: 'product_edit',
+                  html: './src/index.html',
+                  js: './src/renderer/window/ProductEditWindow.ts',
+                  preload: {
+                    js: './src/preload/window/ProductEditWindow.ts',
                   },
                   nodeIntegration: false,
                 },

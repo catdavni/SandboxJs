@@ -3,14 +3,18 @@ import { webpackLoaderRules } from './webpackLoaderRules';
 
 const preloadConfig = {
   mode: 'development',
-  entry: './src/preload.ts',
-  target: 'electron-preload',
-  devtool: 'source-map',
+  entry: {
+    productMain: './src/preload/window/ProductMainWindow.ts',
+    productEdit: './src/preload/window/ProductEditWindow.ts',
+  },
   output: {
-    filename: 'preload.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist', 'preload'),
   },
+  target: 'electron-preload',
+  devtool: 'source-map',
   module: { rules: webpackLoaderRules },
+  resolve: { extensions: ['.ts', '.js'] },
 };
 
 export default preloadConfig;
